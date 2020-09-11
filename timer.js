@@ -32,13 +32,13 @@ timer.pause= function(id, v, restart= false) { //pausa ou despausa um timer
         timer.timers[id].count_ms= 0;
     };
     timer.timers[id].paused= v;
-    if (v && typeof eventTimerPause=="function") { //se o evento TimerPause existir, vai chamá-lo
+    if (v && typeof eventTimerPause=="function") { //se o evento TimerPause existir, vai chamá-lo!
         eventTimerPause(id);
     };
 };
 timer.remove= function(id) { //deleta um timer
     delete timer.timers[id];
-    if (typeof eventTimerKill=="function") { //se o evento TimerKill existir, vai chamá-lo
+    if (typeof eventTimerKill=="function") { //se o evento TimerKill existir, vai chamá-lo!
         eventTimerKill(id);
     };
 };
@@ -76,3 +76,41 @@ setInterval(function() { //a cada 100ms chama a função responsável por atuali
         timer.loop(id); //deve-se passar o id
     };
 }, 100);
+/*
+    Thanks for downloading this file, let's know some it?
+    
+    - (Method) timer.new(id, callback, ms [, times, args, paused, last]) => void
+    Creates a new timer
+    
+    Parameters:
+        - id (any): the timer id
+        - callback (function): the function that must be called when the count ends
+        - ms (int): in miliseconds, set when the callback must be called
+        - times (int): how many times the callback must be called, 0 for infity (default value: 0)
+        - args (array): you can set by default five possible parameters for callback (default value: [])
+        - paused (boolean): if the timer must be paused (default value: false)
+        - last (boolean): What must happen when the script countdown finishes? If true, the timer will be removed, otherwise it will be paused
+        
+    - (Method) timer.remove(id) => void
+    Kills a timer
+    
+    Parameters:
+        - id (any): the timer id
+        
+    - (Method) timer.pause(id, pause [, restart]) => void
+    Pauses a timer
+    
+    - parameters:
+        - id (any): the timer id
+        - pause (boolean): if the timer must be paused or don't
+        - restart (boolean): if the control variables must be restarted
+        
+    - (Method) timer.list() => object
+    Returns a array tha contains the timers id
+    
+    See the events:
+        eventTimerPaused(id): it happens when a timer is paused
+        eventTimerKill(id): it happens when a timer is removed
+        
+        Both returns the id
+/*
