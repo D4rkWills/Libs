@@ -22,4 +22,4 @@ string.reverse= function(s) {
         reply+= s[i];
     };
     return reply;
-}; 
+};
