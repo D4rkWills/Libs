@@ -113,4 +113,4 @@ setInterval(function() { //a cada 100ms chama a função responsável por atuali
         eventTimerKill(id): it happens when a timer is removed
         
         Both returns the id
-/*
+*/
